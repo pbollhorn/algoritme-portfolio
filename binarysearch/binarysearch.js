@@ -10,7 +10,7 @@ export function binarySearch(searchFor, values, printOutput = false) {
   let lowerIndex = 0;
   let middleIndex;
 
-  for (iterations = 1; iterations < 200; iterations++) {
+  for (iterations = 1; ;iterations++) {
     middleIndex = Math.floor((upperIndex + lowerIndex) / 2);
     let middleValue = values[middleIndex];
 
@@ -25,6 +25,10 @@ export function binarySearch(searchFor, values, printOutput = false) {
 
     if (searchFor == middleValue) {
       found = true;
+      break;
+    }
+
+    if(lowerIndex == upperIndex) {
       break;
     }
 
