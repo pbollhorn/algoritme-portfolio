@@ -27,8 +27,8 @@ export function binarySearch(searchFor, values) {
 
   // return middleIndex;
   found = false;
-  index = 5;
-  iterations = 22;
+  let index = 5;
+  let iterations = 22;
   return { found, index, iterations };
 }
 
