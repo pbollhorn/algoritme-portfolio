@@ -4,34 +4,32 @@ export function binarySearch(searchFor, values) {
   let upperIndex = values.length - 1;
   let lowerIndex = 0;
   let middleIndex;
-
   let found = false;
 
-  console.log("upperIndex: " + upperIndex);
-  console.log("lowerIndex: " + lowerIndex);
+  while (found == false) {
+    middleIndex = Math.floor((upperIndex - lowerIndex) / 2);
 
-  // while (found == false) {
-  //   middleIndex = Math.floor((upperIndex - lowerIndex) / 2);
-  //   let middleValue = values[middleIndex];
-  //   console.log("middleValue: " + middleValue);
+    console.log("upperIndex: " + upperIndex);
+    console.log("lowerIndex: " + lowerIndex);
+    console.log("middleIndex: " + middleIndex);
 
-  //   if (middleValue == searchFor) {
-  //     found = true;
-  //   }
+    let middleValue = values[middleIndex];
+    console.log("middleValue: " + middleValue);
 
-  //   if (middleValue > searchFor) {
-  //     upperIndex = upperIndex;
-  //     lowerIndex = middleIndex;
-  //   }
-  // }
+    if (searchFor == middleValue) {
+      found = true;
+    }
 
-  // return middleIndex;
-  found = false;
-  let index = 5;
-  let iterations = 22;
-  return { found, index, iterations };
+    if (searchFor < middleValue) {
+      lowerIndex = lowerIndex;
+      upperIndex = middleIndex;
+    }
+
+    if (searchFor > middleValue) {
+      lowerIndex = middleIndex;
+      upperIndex = upperIndex;
+    }
+  }
+
+  return { found, index: middleIndex, iterations: -1 };
 }
-
-// const values = [21, 22, 23, 25, 27, 28, 29, 31, 32, 34, 35];
-
-// console.log("Found index: " + binarySearch(28, values));
