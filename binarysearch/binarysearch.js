@@ -6,8 +6,9 @@ export function binarySearch(searchFor, values) {
   let middleIndex;
   let found = false;
 
-  while (found == false) {
-    middleIndex = Math.floor((upperIndex - lowerIndex) / 2);
+  let iterations;
+  for (iterations = 1; ; iterations++) {
+    middleIndex = Math.floor((upperIndex + lowerIndex) / 2);
 
     console.log("upperIndex: " + upperIndex);
     console.log("lowerIndex: " + lowerIndex);
@@ -15,9 +16,11 @@ export function binarySearch(searchFor, values) {
 
     let middleValue = values[middleIndex];
     console.log("middleValue: " + middleValue);
+    console.log("---------------------------")
 
     if (searchFor == middleValue) {
       found = true;
+      break;
     }
 
     if (searchFor < middleValue) {
@@ -31,5 +34,5 @@ export function binarySearch(searchFor, values) {
     }
   }
 
-  return { found, index: middleIndex, iterations: -1 };
+  return { found, index: middleIndex, iterations };
 }
