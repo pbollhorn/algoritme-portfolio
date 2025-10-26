@@ -12,5 +12,4 @@ for (let i = 1; i <= 100; i++) {
 
 console.log(data);
 
-
-binarySearch(101, data, true);
+binarySearch(24, data, true);
