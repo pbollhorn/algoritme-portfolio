@@ -25,6 +25,7 @@ export function binarySearch(searchFor, values, print = false) {
     }
 
     if (middleValue == searchFor) {
+      // returnObject in case of success
       const returnObject = { found: true, index: middleIndex, iterations };
       if (print) {
         console.log(`Finished search for value=${searchFor} with this result:`);
@@ -44,6 +45,7 @@ export function binarySearch(searchFor, values, print = false) {
     }
   }
 
+  // returnObject in case of failure
   const returnObject = { found: false, index: -1, iterations };
   if (print) {
     console.log(`Finished search for value=${searchFor} with this result:`);
