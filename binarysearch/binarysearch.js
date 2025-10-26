@@ -1,5 +1,5 @@
-export function binarySearch(searchFor, values, printOutput = false) {
-  if (printOutput) {
+export function binarySearch(searchFor, values, print = false) {
+  if (print) {
     console.log("Starting binary search! :D");
     console.log("---------------------------");
   }
@@ -10,16 +10,15 @@ export function binarySearch(searchFor, values, printOutput = false) {
   let lowerIndex = 0;
   let middleIndex;
 
-  for (iterations = 1; ;iterations++) {
+  for (iterations = 1; ; iterations++) {
     middleIndex = Math.floor((upperIndex + lowerIndex) / 2);
     let middleValue = values[middleIndex];
 
-    if (printOutput) {
-      console.log("iteration no.: " + iterations);
-      console.log("upperIndex: " + upperIndex);
-      console.log("lowerIndex: " + lowerIndex);
-      console.log("middleIndex: " + middleIndex);
-      console.log("middleValue: " + middleValue);
+    if (print) {
+      console.log("Iteration no.: " + iterations);
+      console.log(`Upper index: ${upperIndex} value: ${values[upperIndex]}`);
+      console.log(`Lower index: ${lowerIndex} value: ${values[lowerIndex]}`);
+      console.log(`Middle index: ${middleIndex} value: ${middleValue}`);
       console.log("---------------------------");
     }
 
@@ -28,7 +27,7 @@ export function binarySearch(searchFor, values, printOutput = false) {
       break;
     }
 
-    if(lowerIndex == upperIndex) {
+    if (lowerIndex == upperIndex) {
       break;
     }
 
@@ -45,10 +44,10 @@ export function binarySearch(searchFor, values, printOutput = false) {
 
   const returnObject = { found, index: middleIndex, iterations };
 
-  if (printOutput) {
+  if (print) {
+    console.log("Finished the search with this result:");
     console.log(returnObject);
   }
 
   return returnObject;
 }
-
