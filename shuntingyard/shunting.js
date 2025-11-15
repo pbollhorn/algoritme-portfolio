@@ -58,5 +58,6 @@ function shunting(inputString) {
   outputQueue.printQueue();
 }
 
-const inputString = "2 + 3";
+// const inputString = "2 + 3";
+const inputString = "2 + 3 * 4";
 shunting(inputString);
