@@ -32,27 +32,24 @@ function parseExpression(expression) {
 
 function shunting(inputString) {
   parseExpression(inputString);
-  inputQueue.printQueue();
+//   inputQueue.printQueue();
 
   while (inputQueue.size() > 0) {
     const token = inputQueue.dequeue();
-    console.log(token);
+    // console.log(token);
     // If token is a number add it to outputQueue
-    if (typeof token === "number") outputQueue.enqueue(token);
+    if (typeof token === "number") {
+      outputQueue.enqueue(token);
+      continue;
+    }
     // else token is an operator
     while (precedence[operatorStack.peek()] > precedence[token]) {
       const operator = operatorStack.pop();
       outputQueue.enqueue(operator);
     }
     operatorStack.push(token);
-
-    const o1 = token;
-    const o2 = operatorStack.peek();
-
-    if (precedence[o2] >= precedence[o1]) {
-    }
   }
-
+  console.log("hello from middle");
   while (operatorStack.size() > 0) {
     const operator = operatorStack.pop();
     outputQueue.enqueue(operator);
