@@ -4,10 +4,6 @@ import Stack from "./stack.js";
 // Pseudo code for shunting yard algorithm:
 // https://brilliant.org/wiki/shunting-yard-algorithm/
 
-const inputQueue = new Queue();
-const outputQueue = new Queue();
-const operatorStack = new Stack();
-
 const precedence = {
   //   "^": 5,
   "*": 4,
@@ -16,21 +12,25 @@ const precedence = {
   "-": 1,
 };
 
-//parseExpression læser en expression og putter den i inputQueue
-function parseExpression(expression) {
-  const splitted = expression.split(" ");
-  for (const element of splitted) {
-    if (isNaN(element)) {
-      // element er en operation
-      inputQueue.enqueue(element);
-    } else {
-      // element er et tal
-      inputQueue.enqueue(Number(element));
+export default function shunting(inputString) {
+  const inputQueue = new Queue();
+  const outputQueue = new Queue();
+  const operatorStack = new Stack();
+
+  //parseExpression læser en expression og putter den i inputQueue
+  function parseExpression(expression) {
+    const splitted = expression.split(" ");
+    for (const element of splitted) {
+      if (isNaN(element)) {
+        // element er en operation
+        inputQueue.enqueue(element);
+      } else {
+        // element er et tal
+        inputQueue.enqueue(Number(element));
+      }
     }
   }
-}
 
-function shunting(inputString) {
   parseExpression(inputString);
   //   inputQueue.printQueue();
 
@@ -64,7 +64,3 @@ function shunting(inputString) {
   }
   return outputString.trim();
 }
-
-// const inputString = "2 + 3";
-const inputString = "2 + 3 * 4";
-console.log(shunting(inputString));
