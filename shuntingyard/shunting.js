@@ -1,5 +1,5 @@
-import Queue from "https://pbollhorn.github.io/datastruktur-portfolio/queue/queue.js";
-import Stack from "https://pbollhorn.github.io/datastruktur-portfolio/stack/stack.js";
+import Queue from "./queue.js";
+import Stack from "./stack.js";
 
 // Pseudo code for shunting yard algorithm:
 // https://brilliant.org/wiki/shunting-yard-algorithm/
@@ -32,7 +32,7 @@ function parseExpression(expression) {
 
 function shunting(inputString) {
   parseExpression(inputString);
-//   inputQueue.printQueue();
+  //   inputQueue.printQueue();
 
   while (inputQueue.size() > 0) {
     const token = inputQueue.dequeue();
@@ -56,8 +56,15 @@ function shunting(inputString) {
   }
   console.log("hello from end");
   outputQueue.printQueue();
+
+  // Loop over outputQueue and turn it into outputString
+  let outputString = "";
+  for (const token of outputQueue) {
+    outputString += token + " ";
+  }
+  return outputString.trim();
 }
 
 // const inputString = "2 + 3";
 const inputString = "2 + 3 * 4";
-shunting(inputString);
+console.log(shunting(inputString));
