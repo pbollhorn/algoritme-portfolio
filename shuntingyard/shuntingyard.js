@@ -97,10 +97,6 @@ export default function shunting(inputString) {
     outputQueue.enqueue(operatorStack.pop());
   }
 
-  // Loop over outputQueue and turn it into outputString
-  let outputString = "";
-  for (const token of outputQueue) {
-    outputString += token + " ";
-  }
-  return outputString.trim();
+  let outputString = [...outputQueue].join(" ");
+  return outputString;
 }
