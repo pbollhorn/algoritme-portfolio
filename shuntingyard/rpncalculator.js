@@ -1,0 +1,74 @@
+import Queue from "./queue.js";
+import Stack from "./stack.js";
+
+const inputQueue = new Queue();
+
+const resultStack = new Stack();
+
+//parseExpression læser en expression og putter den i inputQueue
+function parseExpression(expression) {
+  const splitted = expression.split(" ");
+  for (const val of splitted) {
+    if (isNaN(val)) {
+      // val er en operation
+      inputQueue.enqueue(val);
+    } else {
+      inputQueue.enqueue(Number(val));
+    }
+  }
+}
+
+// går gennem køen og finder tal og operationer
+function goThroughQueue() {
+  while (inputQueue.size() > 0) {
+    // dequeue element fra køen
+    const element = inputQueue.dequeue();
+
+    // hvis det er et number:
+    //      push det til resultstack
+    // ellers er det en operation
+    //      så kald performOperation med den
+    if (typeof element === "number") {
+      resultStack.push(element);
+    } else {
+      performOperation(element);
+    }
+  }
+}
+
+// udfører en bestemt operation
+function performOperation(operation) {
+  // pop de sidste to værdier fra resultStack til A og B
+  // hvis operation == "+"
+  //      læg A og B sammen, push resultatet til resultStack
+  // hvis operation == "*"
+  //    gang A og B, push resultat til resultStack
+  // osv...
+
+  const B = resultStack.pop();
+  const A = resultStack.pop();
+  switch (operation) {
+    case "+":
+      resultStack.push(A + B);
+      break;
+    case "-":
+      resultStack.push(A - B);
+      break;
+    case "*":
+      resultStack.push(A * B);
+      break;
+    case "/":
+      resultStack.push(A / B);
+      break;
+  }
+}
+
+function rpncalc(expression) {
+  parseExpression(expression);
+  goThroughQueue();
+  return resultStack.pop();
+}
+
+const expression = "5 9 + 4 /";
+const result = rpncalc(expression);
+console.log(result);
