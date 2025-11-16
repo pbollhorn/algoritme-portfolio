@@ -23,5 +23,9 @@ describe("Shunting yard algorithm", function () {
       const result = shuntingyard("( 12 + 3 ) * ( 7 + 9 )");
       assert.equal(result, "12 3 + 7 9 + *");
     });
+    it("Test case 6", function () {
+      const result = shuntingyard("23 ^ 2 - ( 13 * 9 ) + 5 / 7");
+      assert.equal(result, "23 2 ^ 13 9 * - 5 7 / +");
+    });
   });
 });
