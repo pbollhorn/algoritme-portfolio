@@ -5,18 +5,20 @@ export function binarySearchRecursive(
   print = false,
   startIndex = 0,
   endIndex = values.length - 1,
-  iterations=0
+  iterations = 0
 ) {
+  // Only log if print is true
+  const log = print ? console.log : () => {};
 
   const middleIndex = Math.floor((startIndex + endIndex) / 2);
   const middleValue = values[middleIndex];
-  console.log(middleIndex);
-  console.log(middleValue);
+  log(middleIndex);
+  log(middleValue);
 
   iterations++;
 
   if (startIndex > endIndex) {
-    console.log("Failure");
+    log("Failure");
     return -1;
   }
 
@@ -25,10 +27,8 @@ export function binarySearchRecursive(
     // return middleIndex;
     // returnObject in case of success
     const returnObject = { found: true, index: middleIndex, iterations };
-    if (print) {
-      console.log(`Finished search for value=${searchFor} with this result:`);
-      console.log(returnObject);
-    }
+    log(`Finished search for value=${searchFor} with this result:`);
+    log(returnObject);
     return returnObject;
   }
 
@@ -44,11 +44,17 @@ export function binarySearchRecursive(
     endIndex = endIndex;
   }
 
-  return binarySearchRecursive(searchFor, values, print, startIndex, endIndex, 666);
+  return binarySearchRecursive(
+    searchFor,
+    values,
+    print,
+    startIndex,
+    endIndex,
+    iterations
+  );
 }
 
 // Testing with an array of 11 numbers in sorted order
 const values = [21, 22, 23, 25, 27, 28, 29, 31, 32, 34, 35];
 
-const result = binarySearchRecursive(27, values);
-console.log("THE RESULT IS: " + result.index);
+const result = binarySearchRecursive(27, values, true);

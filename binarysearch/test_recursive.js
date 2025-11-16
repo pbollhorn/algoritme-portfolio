@@ -22,7 +22,7 @@ describe("binarySearchRecursive", function () {
 
     describe("find last", function () {
       it("should return found @ index 99", function () {
-        const result = binarySearch(100, data);
+        const result = binarySearchRecursive(100, data);
         assert.equal(result.found, true);
         assert.equal(result.index, 99);
       });
@@ -31,7 +31,7 @@ describe("binarySearchRecursive", function () {
 
     describe("find middle", function () {
       it("should return found @ index 49", function () {
-        const result = binarySearch(50, data);
+        const result = binarySearchRecursive(50, data);
         assert.equal(result.found, true);
         assert.equal(result.index, 49);
       });
@@ -39,7 +39,7 @@ describe("binarySearchRecursive", function () {
 
     describe("not found", function () {
       it("should return not found @ index -1", function () {
-        const result = binarySearch(241, data);
+        const result = binarySearchRecursive(241, data);
         assert.equal(result.found, false);
         assert.equal(result.index, -1);
       });
@@ -58,7 +58,7 @@ describe("binarySearchRecursive", function () {
 
     describe("find middle (50)", function () {
       it("should return found @ index 49 in 1 iteration", function () {
-        const result = binarySearch(50, data);
+        const result = binarySearchRecursive(50, data);
         assert.equal(result.found, true);
         assert.equal(result.index, 49);
         assert.equal(result.iterations, 1);
@@ -67,7 +67,7 @@ describe("binarySearchRecursive", function () {
 
     describe("find quarter (25)", function () {
       it("should return found @ index 24 in 2 iterations", function () {
-        const result = binarySearch(25, data);
+        const result = binarySearchRecursive(25, data);
         assert.equal(result.found, true);
         assert.equal(result.index, 24);
         assert.equal(result.iterations, 2);
@@ -76,7 +76,7 @@ describe("binarySearchRecursive", function () {
     
     describe("find first", function () {
       it("should return found @ index 0 in 6 iterations", function () {
-        const result = binarySearch(1, data);
+        const result = binarySearchRecursive(1, data);
         assert.equal(result.found, true);
         assert.equal(result.index, 0);
         assert.equal(result.iterations, 6);
@@ -85,7 +85,7 @@ describe("binarySearchRecursive", function () {
 
     describe("find worst (middle-1)", function () {
       it("should return found @ index 48 in 7 iterations", function () {
-        const result = binarySearch(49, data);
+        const result = binarySearchRecursive(49, data);
         assert.equal(result.found, true);
         assert.equal(result.index, 48);
         assert.equal(result.iterations, 7);
@@ -94,7 +94,7 @@ describe("binarySearchRecursive", function () {
 
      describe("find last", function () {
       it("should return found @ index 99 in 7 iterations", function () {
-        const result = binarySearch(100, data);
+        const result = binarySearchRecursive(100, data);
         assert.equal(result.found, true);
         assert.equal(result.index, 99);
         assert.equal(result.iterations, 7);
@@ -103,7 +103,7 @@ describe("binarySearchRecursive", function () {
 
     describe("not found - too large", function () {
       it("should return not found @ index -1 in 7 or fewer iterations", function () {
-        const result = binarySearch(241, data);
+        const result = binarySearchRecursive(241, data);
         assert.equal(result.found, false);
         assert.equal(result.index, -1);
         assert.ok(result.iterations <= 7);
@@ -117,7 +117,7 @@ describe("binarySearchRecursive", function () {
         const value = data[index];
         data.splice(index, 1);
         // and search for it
-        const result = binarySearch(value, data);
+        const result = binarySearchRecursive(value, data);
         assert.equal(result.found, false);
         assert.equal(result.index, -1);
         assert.ok(result.iterations <= 7);
