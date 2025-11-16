@@ -65,7 +65,7 @@ export default function shunting(inputString) {
       token === "/" ||
       token === "^"
     ) {
-      while (
+      while ( // TODO: Does this really have to look so complicated?
         operatorStack.size() > 0 &&
         operatorStack.peek() !== "(" &&
         (precedence[operatorStack.peek()] > precedence[token] ||
