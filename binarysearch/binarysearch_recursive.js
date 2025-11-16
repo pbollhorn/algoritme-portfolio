@@ -13,14 +13,14 @@ export function binarySearchRecursive(
 
   const middleIndex = Math.floor((startIndex + endIndex) / 2);
   const middleValue = values[middleIndex];
-  log(middleIndex);
-  log(middleValue);
-
   iterations++;
 
   if (startIndex > endIndex) {
-    log("Failure");
-    return -1;
+    // returnObject in case of failure
+    const returnObject = { found: false, index: -1, iterations };
+    log(`Finished search for value=${searchFor} with this result:`);
+    log(returnObject);
+    return returnObject;
   }
 
   if (middleValue === searchFor) {
