@@ -1,14 +1,15 @@
+// These are the tests for the binarySearchRecursive function
+// Command to run these tests: npx mocha test_recursive.js
 import assert from "assert";
 import { binarySearchRecursive } from "./binarysearch_recursive.js";
 
 describe("binarySearchRecursive", function () {
-  
   describe("searching", function () {
     let data = [];
     before(function () {
       // create an array of all numbers from 1 to 100
-      for(let i=1; i <= 100; i++) {
-        data[i-1] = i;
+      for (let i = 1; i <= 100; i++) {
+        data[i - 1] = i;
       }
     });
 
@@ -27,7 +28,6 @@ describe("binarySearchRecursive", function () {
         assert.equal(result.index, 99);
       });
     });
-    
 
     describe("find middle", function () {
       it("should return found @ index 49", function () {
@@ -44,15 +44,14 @@ describe("binarySearchRecursive", function () {
         assert.equal(result.index, -1);
       });
     });
-    
   });
 
   describe("iterations - sorted data", function () {
     let data = [];
     before(function () {
       // create an array of all numbers from 1 to 100
-      for(let i=1; i <= 100; i++) {
-        data[i-1] = i;
+      for (let i = 1; i <= 100; i++) {
+        data[i - 1] = i;
       }
     });
 
@@ -73,7 +72,7 @@ describe("binarySearchRecursive", function () {
         assert.equal(result.iterations, 2);
       });
     });
-    
+
     describe("find first", function () {
       it("should return found @ index 0 in 6 iterations", function () {
         const result = binarySearchRecursive(1, data);
@@ -92,7 +91,7 @@ describe("binarySearchRecursive", function () {
       });
     });
 
-     describe("find last", function () {
+    describe("find last", function () {
       it("should return found @ index 99 in 7 iterations", function () {
         const result = binarySearchRecursive(100, data);
         assert.equal(result.found, true);
@@ -113,7 +112,7 @@ describe("binarySearchRecursive", function () {
     describe("not found - removed", function () {
       it("should return not found @ index -1 in 7 or fewer iterations", function () {
         // remove random value from data
-        const index = Math.floor(Math.random()*data.length);
+        const index = Math.floor(Math.random() * data.length);
         const value = data[index];
         data.splice(index, 1);
         // and search for it
@@ -123,8 +122,5 @@ describe("binarySearchRecursive", function () {
         assert.ok(result.iterations <= 7);
       });
     });
-  
   });
-
-
 });
