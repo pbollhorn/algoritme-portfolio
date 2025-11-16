@@ -4,12 +4,14 @@ import Stack from "./stack.js";
 // Pseudo code for shunting yard algorithm:
 // https://brilliant.org/wiki/shunting-yard-algorithm/
 
+// Online converter: https://jsfiddle.net/7jh9f/2/
+
 const precedence = {
-  "^": 5,
-  "*": 4,
+  "^": 4,
+  "*": 3,
   "/": 3,
   "+": 2,
-  "-": 1,
+  "-": 2,
 };
 
 const isLeftAssociative = {
@@ -19,6 +21,10 @@ const isLeftAssociative = {
   "+": true,
   "-": true,
 };
+
+console.log("hello");
+console.log(isLeftAssociative["^"]);
+console.log(isLeftAssociative["*"]);
 
 export default function shunting(inputString) {
   const inputQueue = new Queue();
@@ -60,9 +66,11 @@ export default function shunting(inputString) {
       token === "^"
     ) {
       while (
-        precedence[operatorStack.peek()] > precedence[token] ||
-        (precedence[operatorStack.peek()] === precedence[token] &&
-          isLeftAssociative[token])
+        operatorStack.size() > 0 &&
+        operatorStack.peek() !== "(" &&
+        (precedence[operatorStack.peek()] > precedence[token] ||
+          (precedence[operatorStack.peek()] === precedence[token] &&
+            isLeftAssociative[token]))
       ) {
         outputQueue.enqueue(operatorStack.pop());
       }
