@@ -11,10 +11,6 @@ export function binarySearchRecursive(
   // Only log if print is true
   const log = print ? console.log : () => {};
 
-  const middleIndex = Math.floor((startIndex + endIndex) / 2);
-  const middleValue = values[middleIndex];
-
-
   if (startIndex > endIndex) {
     // returnObject in case of failure
     const returnObject = { found: false, index: -1, iterations };
@@ -23,7 +19,9 @@ export function binarySearchRecursive(
     return returnObject;
   }
 
-    iterations++;
+  const middleIndex = Math.floor((startIndex + endIndex) / 2);
+  const middleValue = values[middleIndex];
+  iterations++;
 
   if (middleValue === searchFor) {
     // console.log("Success, middleIndex: " + middleIndex);
