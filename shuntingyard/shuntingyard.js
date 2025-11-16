@@ -34,14 +34,15 @@ export default function shunting(inputString) {
   parseExpression(inputString);
   //   inputQueue.printQueue();
 
+  // While there are tokens to be read
   while (inputQueue.size() > 0) {
+    
+    // Read a token
     const token = inputQueue.dequeue();
-    // console.log(token);
 
     // If token is a number add it to outputQueue
     if (typeof token === "number") {
       outputQueue.enqueue(token);
-      continue;
     }
 
     // If token is an operator
@@ -58,7 +59,7 @@ export default function shunting(inputString) {
     }
 
     // If token is a right bracket
-    if (token === "(") {
+    if (token === ")") {
       while (operatorStack.peek() !== "(") {
         outputQueue.enqueue(operatorStack.pop());
       }
