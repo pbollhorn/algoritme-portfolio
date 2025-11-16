@@ -53,7 +53,11 @@ export default function shunting(inputString) {
 
     // If token is an operator
     if (token === "+" || token === "-" || token === "*" || token === "/") {
-      while (precedence[operatorStack.peek()] > precedence[token] || (precedence[operatorStack.peek()]===precedence[token] && isLeftAssociative[token])) {
+      while (
+        precedence[operatorStack.peek()] > precedence[token] ||
+        (precedence[operatorStack.peek()] === precedence[token] &&
+          isLeftAssociative[token])
+      ) {
         outputQueue.enqueue(operatorStack.pop());
       }
       operatorStack.push(token);
