@@ -8,8 +8,7 @@ export function binarySearchRecursive(
   upperIndex = values.length - 1,
   iterations = 0
 ) {
-  // Only log if print is true
-  const log = print ? console.log : () => {};
+  const log = print ? console.log : () => {}; // Only log if print is true
 
   // Base case in case of failure
   if (lowerIndex > upperIndex) {
