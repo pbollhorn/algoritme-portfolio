@@ -5,11 +5,19 @@ import Stack from "./stack.js";
 // https://brilliant.org/wiki/shunting-yard-algorithm/
 
 const precedence = {
-  //   "^": 5,
+  "^": 5,
   "*": 4,
   "/": 3,
   "+": 2,
   "-": 1,
+};
+
+const isLeftAssociative = {
+  "^": false,
+  "*": true,
+  "/": true,
+  "+": true,
+  "-": true,
 };
 
 export default function shunting(inputString) {
@@ -35,7 +43,6 @@ export default function shunting(inputString) {
 
   // While there are tokens to be read
   while (inputQueue.size() > 0) {
-    
     // Read a token
     const token = inputQueue.dequeue();
 
@@ -46,7 +53,7 @@ export default function shunting(inputString) {
 
     // If token is an operator
     if (token === "+" || token === "-" || token === "*" || token === "/") {
-      while (precedence[operatorStack.peek()] > precedence[token]) {
+      while (precedence[operatorStack.peek()] > precedence[token] || (precedence[operatorStack.peek()]===precedence[token] && isLeftAssociative[token])) {
         outputQueue.enqueue(operatorStack.pop());
       }
       operatorStack.push(token);
