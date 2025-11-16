@@ -1,5 +1,5 @@
 // This is the binarySearchRecursive function
-// Command to tests for this function: npx mocha test_recursive.js
+// Command to run tests for this function: npx mocha test_recursive.js
 export function binarySearchRecursive(
   searchFor,
   values,
@@ -13,7 +13,7 @@ export function binarySearchRecursive(
 
   const middleIndex = Math.floor((startIndex + endIndex) / 2);
   const middleValue = values[middleIndex];
-  iterations++;
+
 
   if (startIndex > endIndex) {
     // returnObject in case of failure
@@ -22,6 +22,8 @@ export function binarySearchRecursive(
     log(returnObject);
     return returnObject;
   }
+
+    iterations++;
 
   if (middleValue === searchFor) {
     // console.log("Success, middleIndex: " + middleIndex);
