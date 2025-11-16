@@ -1,7 +1,7 @@
 import assert from "assert";
-import { binarySearch } from "./binarysearch.js";
+import { binarySearchRecursive } from "./binarysearch_recursive.js";
 
-describe("binarySearch", function () {
+describe("binarySearchRecursive", function () {
   
   describe("searching", function () {
     let data = [];
@@ -14,7 +14,7 @@ describe("binarySearch", function () {
 
     describe("find first", function () {
       it("should return found @ index 0", function () {
-        const result = binarySearch(1, data);
+        const result = binarySearchRecursive(1, data);
         assert.equal(result.found, true);
         assert.equal(result.index, 0);
       });

@@ -6,6 +6,16 @@ export function binarySearchRecursive(
   endIndex,
   iterations
 ) {
+  if (startIndex === undefined) {
+    startIndex = 0;
+  }
+  if (endIndex === undefined) {
+    startIndex = values.length - 1;
+  }
+  if (iterations === undefined) {
+    iterations = 0;
+  }
+
   const middleIndex = Math.floor((startIndex + endIndex) / 2);
   const middleValue = values[middleIndex];
   console.log(middleIndex);
@@ -39,5 +49,5 @@ export function binarySearchRecursive(
 // Testing with an array of 11 numbers in sorted order
 const values = [21, 22, 23, 25, 27, 28, 29, 31, 32, 34, 35];
 
-const result = binarySearchRecursive(24, values, 0, 10, 666);
+const result = binarySearchRecursive(27, values, 0, 10, 666);
 console.log("THE RESULT IS: " + result);
