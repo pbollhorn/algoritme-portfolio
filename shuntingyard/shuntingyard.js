@@ -37,22 +37,39 @@ export default function shunting(inputString) {
   while (inputQueue.size() > 0) {
     const token = inputQueue.dequeue();
     // console.log(token);
+
     // If token is a number add it to outputQueue
     if (typeof token === "number") {
       outputQueue.enqueue(token);
       continue;
     }
-    // else token is an operator
-    while (precedence[operatorStack.peek()] > precedence[token]) {
-      const operator = operatorStack.pop();
-      outputQueue.enqueue(operator);
+
+    // If token is an operator
+    if (token === "+" || token === "-" || token === "*" || token === "/") {
+      while (precedence[operatorStack.peek()] > precedence[token]) {
+        outputQueue.enqueue(operatorStack.pop());
+      }
+      operatorStack.push(token);
     }
-    operatorStack.push(token);
+
+    // If token is a left bracket
+    if (token === "(") {
+      operatorStack.push(token);
+    }
+
+    // If token is a right bracket
+    if (token === "(") {
+      while (operatorStack.peek() !== "(") {
+        outputQueue.enqueue(operatorStack.pop());
+      }
+      // pop left bracket from stack and discard it
+      operatorStack.pop();
+    }
   }
-  console.log("hello from middle");
+
+  // While there are operators on the stack, pop them to the queue
   while (operatorStack.size() > 0) {
-    const operator = operatorStack.pop();
-    outputQueue.enqueue(operator);
+    outputQueue.enqueue(operatorStack.pop());
   }
   console.log("hello from end");
   outputQueue.printQueue();
