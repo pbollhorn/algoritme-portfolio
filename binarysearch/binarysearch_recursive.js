@@ -11,8 +11,8 @@ export function binarySearchRecursive(
   // Only log if print is true
   const log = print ? console.log : () => {};
 
+  // Base case in case of failure
   if (lowerIndex > upperIndex) {
-    // returnObject in case of failure
     const returnObject = { found: false, index: -1, iterations };
     log(`Finished search for value=${searchFor} with this result:`);
     log(returnObject);
@@ -22,21 +22,21 @@ export function binarySearchRecursive(
   iterations++;
   const middleIndex = Math.floor((lowerIndex + upperIndex) / 2);
   const middleValue = values[middleIndex];
-
   log(`Iteration no.: ${iterations}`);
   log(`Lower index: ${lowerIndex} value: ${values[lowerIndex]}`);
   log(`Upper index: ${upperIndex} value: ${values[upperIndex]}`);
   log(`Middle index: ${middleIndex} value: ${middleValue}`);
   log("---------------------------");
 
+  // Base case in case of success
   if (middleValue === searchFor) {
-    // returnObject in case of success
     const returnObject = { found: true, index: middleIndex, iterations };
     log(`Finished search for value=${searchFor} with this result:`);
     log(returnObject);
     return returnObject;
   }
 
+  // Recursive case
   if (middleValue > searchFor) {
     return binarySearchRecursive(
       searchFor,
@@ -47,7 +47,6 @@ export function binarySearchRecursive(
       iterations
     );
   }
-
   if (middleValue < searchFor) {
     return binarySearchRecursive(
       searchFor,
