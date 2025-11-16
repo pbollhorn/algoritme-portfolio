@@ -32,7 +32,6 @@ export default function shunting(inputString) {
   }
 
   parseExpression(inputString);
-  //   inputQueue.printQueue();
 
   // While there are tokens to be read
   while (inputQueue.size() > 0) {
@@ -72,8 +71,6 @@ export default function shunting(inputString) {
   while (operatorStack.size() > 0) {
     outputQueue.enqueue(operatorStack.pop());
   }
-  console.log("hello from end");
-  outputQueue.printQueue();
 
   // Loop over outputQueue and turn it into outputString
   let outputString = "";

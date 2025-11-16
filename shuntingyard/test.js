@@ -15,5 +15,13 @@ describe("Shunting yard algorithm", function () {
       const result = shuntingyard("3 + 4 * ( 5 - 2 )");
       assert.equal(result, "3 4 5 2 - * +");
     });
+    it("Test case 4", function () {
+      const result = shuntingyard("( 5 + 9 ) / 4");
+      assert.equal(result, "5 9 + 4 /");
+    });
+    it("Test case 5", function () {
+      const result = shuntingyard("( 12 + 3 ) * ( 7 + 9 )");
+      assert.equal(result, "12 3 + 7 9 + *");
+    });
   });
 });
