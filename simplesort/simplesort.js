@@ -1,9 +1,12 @@
+// TODO: Fix this simpleSort so it works
 export function simpleSort(array) {
   for (let i = 0; i < array.length - 1; i++) {
-    let current = array[i];
-    let next = array[i + 1];
-    if (current > next) {
-      swap(i, i+1);
+    let j = i;
+    while (j >= 0) {
+      if (array[j] > array[j + 1]) {
+        swap(i, i + 1);
+      }
+      j--;
     }
   }
 
