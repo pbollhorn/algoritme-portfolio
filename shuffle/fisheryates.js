@@ -12,6 +12,7 @@ function random(max) {
   return Math.floor(Math.random() * max);
 }
 
+// TODO: Why does this not work
 function swap(a, b) {
   const c = a;
   a = b;
