@@ -1,4 +1,4 @@
-// TODO: Fix this simpleSort so it works
+// TODO: simpleSort er insertion sort
 export function simpleSort(array) {
   for (let i = 0; i < array.length - 1; i++) {
     let j = i;
