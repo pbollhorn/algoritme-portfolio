@@ -1,6 +1,6 @@
 export function fisheryates(array) {
   console.log(array);
-  for (let i = 1; i < array.length - 1; i++) {
+  for (let i = 1; i < array.length; i++) {
     const j = random(i);
     // swap(array[i], array[j]);
     [array[i], array[j]] = [array[j], array[i]];
