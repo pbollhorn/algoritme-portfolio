@@ -4,12 +4,11 @@ export function mergeSort(array, print = false) {
   const log = print ? console.log : () => {}; // Only log if print is true
 
   if (array.length <= 1) {
-    const returnObject = {
+    return {
       array: array,
       iterations: 0,
       sorted: true,
     };
-    return returnObject;
   }
 
   const middleIndex = Math.floor(array.length / 2);
@@ -20,10 +19,9 @@ export function mergeSort(array, print = false) {
   arrayB = mergeSort(arrayB, print).array;
   const arrayC = merge(arrayA, arrayB);
 
-  const returnObject = {
+  return {
     array: arrayC,
     iterations: 0,
     sorted: true,
   };
-  return returnObject;
 }
