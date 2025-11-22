@@ -3,16 +3,6 @@ export function quickSort(array, print = false) {
     return array;
   }
 
-//   if (array.length === 2) {
-//     if (array[0] > array[1]) {
-//       const temp = array[0];
-//       array[0] = array[1];
-//       array[1] = temp;
-//     }
-//     return array;
-//   }
-
-  // array.length > 2
   const middleIndex = Math.floor(array.length / 2);
   const pivot = array[middleIndex];
 
