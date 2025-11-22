@@ -18,11 +18,10 @@ export function mergeSort(array, print = false, iterations = 0) {
   let arrayB = array.slice(middleIndex);
 
   const outputA = mergeSort(arrayA, print, iterations);
-  iterations += outputA.iterations;
 
   const outputB = mergeSort(arrayB, print, iterations);
-  iterations += outputB.iterations;
 
+  iterations = outputA.iterations + outputB.iterations;
 
   const arrayC = merge(outputA.array, outputB.array);
 
