@@ -6,21 +6,21 @@ export function quickSort(array, print = false) {
     return array;
   }
 
-  // Sets middle element to be pivot
+  // Sets pivot to be middle element
   const middleIndex = Math.floor(array.length / 2);
   const pivot = array[middleIndex];
 
   // Split array into 3 subarrays:
   // - smaller than pivot
-  // - larger than pivot
   // - equal to pivot
+  // - larger than pivot
   const smaller = [];
-  const larger = [];
   const equal = [];
+  const larger = [];
   for (const element of array) {
     if (element < pivot) smaller.push(element);
+    else if (element === pivot) equal.push(element);
     else if (element > pivot) larger.push(element);
-    else equal.push(element);
   }
 
   // Sort subarrays using recursion
