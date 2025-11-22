@@ -7,14 +7,23 @@ export function quickSort(array, print = false) {
   const pivot = array[middleIndex];
 
   const smaller = [];
-  const equal = [];
   const larger = [];
+  const equal = [];
+  
 
+  // split array into 3 subarrays:
+  // - smaller than pivot
+  // - larger than pivot
+  // - equal to pivot
   for (const element of array) {
     if (element < pivot) smaller.push(element);
     else if (element > pivot) larger.push(element);
     else equal.push(element);
   }
 
-  return [...quickSort(smaller), ...equal, ...quickSort(larger)];
+  const smallerSorted = quickSort(smaller);
+  const largerSorted = quickSort(larger);
+
+  // return combined array
+  return [...smallerSorted, ...equal, ...largerSorted];
 }
