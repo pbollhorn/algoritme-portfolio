@@ -1,12 +1,14 @@
 import { merge } from "./merge.js";
 
-export function mergeSort(array, print = false) {
+export function mergeSort(array, print = false, iterations = 0) {
   const log = print ? console.log : () => {}; // Only log if print is true
+
+  iterations++;
 
   if (array.length <= 1) {
     return {
       array: array,
-      iterations: 0,
+      iterations: 1,
       sorted: true,
     };
   }
@@ -15,13 +17,18 @@ export function mergeSort(array, print = false) {
   let arrayA = array.slice(0, middleIndex);
   let arrayB = array.slice(middleIndex);
 
-  arrayA = mergeSort(arrayA, print).array;
-  arrayB = mergeSort(arrayB, print).array;
-  const arrayC = merge(arrayA, arrayB);
+  const outputA = mergeSort(arrayA, print, iterations);
+  iterations += outputA.iterations;
+
+  const outputB = mergeSort(arrayB, print, iterations);
+  iterations += outputB.iterations;
+
+
+  const arrayC = merge(outputA.array, outputB.array);
 
   return {
     array: arrayC,
-    iterations: 0,
+    iterations: iterations,
     sorted: true,
   };
 }
