@@ -3,8 +3,6 @@ import { merge } from "./merge.js";
 export function mergeSort(array, print = false, iterations = 0) {
   const log = print ? console.log : () => {}; // Only log if print is true
 
-  iterations++;
-
   if (array.length <= 1) {
     return {
       array: array,
@@ -18,16 +16,12 @@ export function mergeSort(array, print = false, iterations = 0) {
   let arrayB = array.slice(middleIndex);
 
   const outputA = mergeSort(arrayA, print, iterations);
-
   const outputB = mergeSort(arrayB, print, iterations);
-
-  iterations = outputA.iterations + outputB.iterations;
-
-  const arrayC = merge(outputA.array, outputB.array);
+  const outputC = merge(outputA.array, outputB.array, iterations);
 
   return {
-    array: arrayC,
-    iterations: iterations,
+    array: outputC.array,
+    iterations: outputA.iterations + outputB.iterations + outputC.iterations,
     sorted: true,
   };
 }
