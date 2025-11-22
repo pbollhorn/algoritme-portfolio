@@ -4,18 +4,23 @@ export function insertionSort(array, print = false) {
 
   let iterations = 0;
 
+  log("Starting insertion sort on this array:");
+  log(array);
+  log("---------------------------");
+
   for (let i = 1; i < array.length; i++) {
     for (let j = i; j > 0 && array[j - 1] > array[j]; j--) {
-      log(array);
-      
-      
-      
       iterations++;
-      
+
       // swap array[j] and array[j-1]
       const temp = array[j];
       array[j] = array[j - 1];
       array[j - 1] = temp;
+
+      log(`Iteration no.: ${iterations}`);
+      log(`i: ${i}, j: ${j}`);
+      log(array);
+      log("---------------------------");
     }
   }
 
