@@ -9,28 +9,21 @@ export function merge(arrayA, arrayB) {
 
   // Loop until either arrayA or arrayB is empty
   while (arrayA.length > 0 && arrayB.length > 0) {
-    const A = arrayA.shift();
-    const B = arrayB.shift();
-
-    if (A < B) {
-      arrayC.push(A);
-      arrayC.push(B);
+    if (arrayA[0] < arrayB[0]) {
+      arrayC.push(arrayA.shift());
     } else {
-      arrayC.push(B);
-      arrayC.push(A);
+      arrayC.push(arrayB.shift());
     }
   }
 
   // Loop until arrayA is empty
   while (arrayA.length > 0) {
-    const A = arrayA.shift();
-    arrayC.push(A);
+    arrayC.push(arrayA.shift());
   }
 
   // Loop until arrayB is empty
   while (arrayB.length > 0) {
-    const B = arrayB.shift();
-    arrayC.push(B);
+    arrayC.push(arrayB.shift());
   }
 
   return arrayC;
