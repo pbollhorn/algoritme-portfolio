@@ -1,5 +1,5 @@
 import { insertionSort } from "./insertionsort.js";
 
-const array = [1, 2, 3, 4];
+const array = [4, 2, 3, 1];
 const result = insertionSort(array);
 console.log(result);
