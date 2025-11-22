@@ -12,8 +12,8 @@ export function mergeSort(array, print = false, iterations = 0) {
   }
 
   const middleIndex = Math.floor(array.length / 2);
-  let arrayA = array.slice(0, middleIndex);
-  let arrayB = array.slice(middleIndex);
+  const arrayA = array.slice(0, middleIndex);
+  const arrayB = array.slice(middleIndex);
 
   const outputA = mergeSort(arrayA, print, iterations);
   const outputB = mergeSort(arrayB, print, iterations);
