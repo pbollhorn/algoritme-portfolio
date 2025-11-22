@@ -1,20 +1,23 @@
-export function insertionSort(array) {
+// Swap based version of insertion sort
+export function insertionSort(array, print = false) {
+  const log = print ? console.log : () => {}; // Only log if print is true
+
+  let iterations = 0;
+
   for (let i = 1; i < array.length; i++) {
-    let j = i;
-    while (j > 0 && array[j - 1] > array[j]) {
-      console.log("Starting inner loop");
-      // swap A[j] and A[j-1]
+    for (let j = i; j > 0 && array[j - 1] > array[j]; j--) {
+      log(array);
+      
+      
+      
+      iterations++;
+      
+      // swap array[j] and array[j-1]
       const temp = array[j];
       array[j] = array[j - 1];
       array[j - 1] = temp;
-
-      // decrement j
-      j = j - 1;
     }
   }
 
-  let iterations = 0;
-  let sorted = false;
-
-  return { array, iterations, sorted };
+  return { array, iterations, sorted: true };
 }
