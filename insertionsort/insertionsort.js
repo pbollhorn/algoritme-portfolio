@@ -1,6 +1,5 @@
 export function insertionSort(array) {
-  let i = 1;
-  while (i < array.length) {
+  for (let i = 1; i < array.length; i++) {
     let j = i;
     while (j > 0 && array[j - 1] > array[j]) {
       console.log("Starting inner loop");
@@ -12,9 +11,6 @@ export function insertionSort(array) {
       // decrement j
       j = j - 1;
     }
-
-    //increment i
-    i = i + 1;
   }
 
   let iterations = 0;
