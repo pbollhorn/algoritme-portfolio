@@ -1,7 +1,7 @@
 // My implementation of Merge Sort
 //
-// The iterations variable counts
-// number of times the mergeSort function is called
+// The iterations variable counts:
+// Number of times the mergeSort function is called
 // plus number of loops in merge subfunction
 let iterations = 0;
 
