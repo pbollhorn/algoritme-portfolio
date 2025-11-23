@@ -1,7 +1,9 @@
-export function quickSort(array, print = false) {
+export function quickSort(array, print = false, iterations = 0) {
   const log = print ? console.log : () => {}; // Only log if print is true
 
-  const iterations = 0;
+  log(`Iteration no.: ${iterations}`);
+  log(`${array}`);
+  log("---------------------------");
 
   // Base case
   if (array.length <= 1) {
@@ -26,8 +28,8 @@ export function quickSort(array, print = false) {
   }
 
   // Sort subarrays using recursion
-  const smallerSorted = quickSort(smaller, print).array;
-  const largerSorted = quickSort(larger, print).array;
+  const smallerSorted = quickSort(smaller, print, iterations).array;
+  const largerSorted = quickSort(larger, print, iterations).array;
 
   // Combine back into one array
   const combined = [...smallerSorted, ...equal, ...largerSorted];
