@@ -16,7 +16,7 @@ export default function quickSort(array, print = false) {
     return array;
   }
 
-  // Set pivot to be a random element (Grokking Algoithms 2nd Editon, page 75)
+  // Set pivot to be a random element (Grokking Algorithms 2nd Editon, page 75)
   const randomIndex = Math.floor(Math.random() * array.length);
   const pivot = array[randomIndex];
 
