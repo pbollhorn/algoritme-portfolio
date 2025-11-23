@@ -16,9 +16,9 @@ export default function quickSort(array, print = false) {
     return array;
   }
 
-  // Set pivot to be middle element
-  const middleIndex = Math.floor(array.length / 2);
-  const pivot = array[middleIndex];
+  // Set pivot to be a random element (Grokking Algoithms 2nd Editon, page 75)
+  const randomIndex = Math.floor(Math.random() * array.length);
+  const pivot = array[randomIndex];
 
   // Split array into 3 subarrays:
   // - smaller than pivot
