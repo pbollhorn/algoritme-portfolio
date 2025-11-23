@@ -67,17 +67,17 @@ export default function shuntingYard(inputString) {
       operatorStack.push(token);
     }
 
-    // If token is a left bracket
+    // If token is a left parenthesis
     if (token === "(") {
       operatorStack.push(token);
     }
 
-    // If token is a right bracket
+    // If token is a right parenthesis
     if (token === ")") {
       while (operatorStack.peek() !== "(") {
         outputQueue.enqueue(operatorStack.pop());
       }
-      // pop left bracket from stack and discard it
+      // pop left parenthesis from stack and discard it
       operatorStack.pop();
     }
   }
