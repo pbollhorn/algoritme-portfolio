@@ -1,9 +1,11 @@
 export function quickSort(array, print = false) {
   const log = print ? console.log : () => {}; // Only log if print is true
 
+  const iterations = 0;
+
   // Base case
   if (array.length <= 1) {
-    return array;
+    return { array, iterations, sorted: true };
   }
 
   // Sets pivot to be middle element
@@ -24,9 +26,11 @@ export function quickSort(array, print = false) {
   }
 
   // Sort subarrays using recursion
-  const smallerSorted = quickSort(smaller, print);
-  const largerSorted = quickSort(larger, print);
+  const smallerSorted = quickSort(smaller, print).array;
+  const largerSorted = quickSort(larger, print).array;
 
-  // Return combined array
-  return [...smallerSorted, ...equal, ...largerSorted];
+  // Combine back into one array
+  const combined = [...smallerSorted, ...equal, ...largerSorted];
+
+  return { array: combined, iterations, sorted: true };
 }
