@@ -30,5 +30,13 @@ describe("Testing Shunting Yard algorithm", function () {
       const result = shuntingYard("2 + 3 * 4");
       assert.equal(result, "2 3 4 * +");
     });
+    it("Test B", function () {
+      const result = shuntingYard("2");
+      assert.equal(result, "2");
+    });
+    it("Test C", function () {
+      const result = shuntingYard("85.117 - 31.09");
+      assert.equal(result, "85.117 31.09 -");
+    });
   });
 });
