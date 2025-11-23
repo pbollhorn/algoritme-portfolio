@@ -1,15 +1,19 @@
-export function quickSort(array, print = false, iterations = 0) {
+// My implementation of Quick Sort
+// The iterations variable counts number of times the quickSort function is called
+let iterations = 0;
+
+export function quickSort(array, print = false) {
   const log = print ? console.log : () => {}; // Only log if print is true
+
+  iterations++;
 
   log(`Iteration no.: ${iterations}`);
   log(`${array}`);
   log("---------------------------");
 
-  iterations++;
-
   // Base case
   if (array.length <= 1) {
-    return { array, iterations, sorted: true };
+    return array;
   }
 
   // Sets pivot to be middle element
@@ -30,11 +34,8 @@ export function quickSort(array, print = false, iterations = 0) {
   }
 
   // Sort subarrays using recursion
-  const smallerSorted = quickSort(smaller, print, iterations).array;
-  const largerSorted = quickSort(larger, print, iterations).array;
+  const smallerSorted = quickSort(smaller, print);
+  const largerSorted = quickSort(larger, print);
 
-  // Combine back into one array
-  const combined = [...smallerSorted, ...equal, ...largerSorted];
-
-  return { array: combined, iterations, sorted: true };
+  return [...smallerSorted, ...equal, ...largerSorted];
 }
