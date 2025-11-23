@@ -1,6 +1,6 @@
 // Swap based version of insertion sort
 // The iterations variable counts number of times the body of the inner loop is executed
-export function insertionSort(array, print = false) {
+export default function insertionSort(array, print = false) {
   const log = print ? console.log : () => {}; // Only log if print is true
 
   let iterations = 0;
