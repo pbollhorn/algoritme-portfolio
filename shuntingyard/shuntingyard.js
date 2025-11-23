@@ -17,22 +17,22 @@ const isLeftAssociative = {
   "-": true,
 };
 
-//parseExpression læser en inputString og returnerer en inputQueue
+// convert an inputString to an inputQueue
 function parseExpression(inputString) {
   const inputQueue = new Queue();
-  for (const element of inputString.split(" ")) {
-    if (isNaN(element)) {
-      // element er en operation
-      inputQueue.enqueue(element);
+  for (const token of inputString.split(" ")) {
+    if (isNaN(token)) {
+      // token is an operation
+      inputQueue.enqueue(token);
     } else {
-      // element er et tal
-      inputQueue.enqueue(Number(element));
+      // token is a number
+      inputQueue.enqueue(Number(token));
     }
   }
   return inputQueue;
 }
 
-export default function shunting(inputString) {
+export default function shuntingYard(inputString) {
   const inputQueue = parseExpression(inputString);
   const outputQueue = new Queue();
   const operatorStack = new Stack();
