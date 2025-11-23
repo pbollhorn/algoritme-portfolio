@@ -3,6 +3,7 @@ import Stack from "./stack.js";
 
 // Pseudo code for shunting yard algorithm:
 // https://brilliant.org/wiki/shunting-yard-algorithm/
+// https://en.wikipedia.org/wiki/Shunting_yard_algorithm
 
 // Online converter: https://jsfiddle.net/7jh9f/2/
 
