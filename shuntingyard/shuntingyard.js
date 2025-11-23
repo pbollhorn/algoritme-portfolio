@@ -56,7 +56,6 @@ export default function shuntingYard(inputString) {
       token === "^"
     ) {
       while (
-        // TODO: Does this really have to look so complicated?
         operatorStack.size() > 0 &&
         operatorStack.peek() !== "(" &&
         (precedence[operatorStack.peek()] > precedence[token] ||
