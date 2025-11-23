@@ -1,74 +1,74 @@
 import Queue from "./queue.js";
 import Stack from "./stack.js";
+import { parseExpression } from "./shuntingyard.js";
 
-const inputQueue = new Queue();
+// RPN Calculator which works with +, -, *, /
+export default function rpnCalculator(inputString) {
+  const inputQueue = parseExpression(inputString);
+  const resultStack = new Stack();
 
-const resultStack = new Stack();
+  // går gennem køen og finder tal og operationer
+  function goThroughQueue() {
+    while (inputQueue.size() > 0) {
+      // dequeue element fra køen
+      const element = inputQueue.dequeue();
 
-//parseExpression læser en expression og putter den i inputQueue
-function parseExpression(expression) {
-  const splitted = expression.split(" ");
-  for (const val of splitted) {
-    if (isNaN(val)) {
-      // val er en operation
-      inputQueue.enqueue(val);
-    } else {
-      inputQueue.enqueue(Number(val));
+      // hvis det er et number:
+      //      push det til resultstack
+      // ellers er det en operation
+      //      så kald performOperation med den
+      if (typeof element === "number") {
+        resultStack.push(element);
+      } else {
+        performOperation(element);
+      }
     }
   }
-}
 
-// går gennem køen og finder tal og operationer
-function goThroughQueue() {
-  while (inputQueue.size() > 0) {
-    // dequeue element fra køen
-    const element = inputQueue.dequeue();
+  // udfører en bestemt operation
+  function performOperation(operation) {
+    // pop de sidste to værdier fra resultStack til A og B
+    // hvis operation == "+"
+    //      læg A og B sammen, push resultatet til resultStack
+    // hvis operation == "*"
+    //    gang A og B, push resultat til resultStack
+    // osv...
 
-    // hvis det er et number:
-    //      push det til resultstack
-    // ellers er det en operation
-    //      så kald performOperation med den
-    if (typeof element === "number") {
-      resultStack.push(element);
-    } else {
-      performOperation(element);
+    const B = resultStack.pop();
+    const A = resultStack.pop();
+    switch (operation) {
+      case "+":
+        resultStack.push(A + B);
+        break;
+      case "-":
+        resultStack.push(A - B);
+        break;
+      case "*":
+        resultStack.push(A * B);
+        break;
+      case "/":
+        resultStack.push(A / B);
+        break;
     }
   }
-}
 
-// udfører en bestemt operation
-function performOperation(operation) {
-  // pop de sidste to værdier fra resultStack til A og B
-  // hvis operation == "+"
-  //      læg A og B sammen, push resultatet til resultStack
-  // hvis operation == "*"
-  //    gang A og B, push resultat til resultStack
-  // osv...
-
-  const B = resultStack.pop();
-  const A = resultStack.pop();
-  switch (operation) {
-    case "+":
-      resultStack.push(A + B);
-      break;
-    case "-":
-      resultStack.push(A - B);
-      break;
-    case "*":
-      resultStack.push(A * B);
-      break;
-    case "/":
-      resultStack.push(A / B);
-      break;
-  }
-}
-
-function rpncalc(expression) {
-  parseExpression(expression);
   goThroughQueue();
   return resultStack.pop();
 }
 
+// //parseExpression læser en expression og putter den i inputQueue
+// function parseExpression(expression) {
+//   const splitted = expression.split(" ");
+//   for (const val of splitted) {
+//     if (isNaN(val)) {
+//       // val er en operation
+//       inputQueue.enqueue(val);
+//     } else {
+//       inputQueue.enqueue(Number(val));
+//     }
+//   }
+// }
+
 const expression = "5 9 + 4 /";
-const result = rpncalc(expression);
+const result = rpnCalculator(expression);
 console.log(result);

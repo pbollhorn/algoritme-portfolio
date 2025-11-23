@@ -61,8 +61,8 @@ export default function shuntingYard(inputString) {
   return outputString;
 }
 
-// parse an inputString to an inputQueue
-function parseExpression(inputString) {
+// Parse an inputString to an inputQueue
+export function parseExpression(inputString) {
   const inputQueue = new Queue();
   for (const token of inputString.split(" ")) {
     if (isNaN(token)) {
