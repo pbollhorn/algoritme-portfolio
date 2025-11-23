@@ -1,8 +1,20 @@
+// My implementation of Merge Sort
+//
+// The iterations variable counts
+// number of times the mergeSort function is called
+// plus number of loops in merge subfunction
 let iterations = 0;
 
 export default function mergeSort(array, print = false) {
   const log = print ? console.log : () => {}; // Only log if print is true
 
+  iterations++;
+
+  log(`Iteration no.: ${iterations}`);
+  log(`${array}`);
+  log("---------------------------");
+
+  // Base case
   if (array.length <= 1) {
     return array;
   }
