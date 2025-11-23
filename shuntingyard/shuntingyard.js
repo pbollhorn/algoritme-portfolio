@@ -1,37 +1,7 @@
 import Queue from "./queue.js";
 import Stack from "./stack.js";
 
-const precedence = {
-  "^": 4,
-  "*": 3,
-  "/": 3,
-  "+": 2,
-  "-": 2,
-};
-
-const isLeftAssociative = {
-  "^": false,
-  "*": true,
-  "/": true,
-  "+": true,
-  "-": true,
-};
-
-// parse an inputString to an inputQueue
-function parseExpression(inputString) {
-  const inputQueue = new Queue();
-  for (const token of inputString.split(" ")) {
-    if (isNaN(token)) {
-      // token is an operation
-      inputQueue.enqueue(token);
-    } else {
-      // token is a number
-      inputQueue.enqueue(Number(token));
-    }
-  }
-  return inputQueue;
-}
-
+// Shunting Yard algorithm which works with +, -, *, /, ^, ( and )
 export default function shuntingYard(inputString) {
   const inputQueue = parseExpression(inputString);
   const outputQueue = new Queue();
@@ -90,3 +60,34 @@ export default function shuntingYard(inputString) {
   let outputString = [...outputQueue].join(" ");
   return outputString;
 }
+
+// parse an inputString to an inputQueue
+function parseExpression(inputString) {
+  const inputQueue = new Queue();
+  for (const token of inputString.split(" ")) {
+    if (isNaN(token)) {
+      // token is an operation
+      inputQueue.enqueue(token);
+    } else {
+      // token is a number
+      inputQueue.enqueue(Number(token));
+    }
+  }
+  return inputQueue;
+}
+
+const precedence = {
+  "^": 4,
+  "*": 3,
+  "/": 3,
+  "+": 2,
+  "-": 2,
+};
+
+const isLeftAssociative = {
+  "^": false,
+  "*": true,
+  "/": true,
+  "+": true,
+  "-": true,
+};
