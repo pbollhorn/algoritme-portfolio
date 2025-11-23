@@ -23,6 +23,10 @@ describe("Testing Shunting Yard algorithm", function () {
       const result = shuntingYard("23 ^ 2 - ( 13 * 9 ) + 5 / 7");
       assert.equal(result, "23 2 ^ 13 9 * - 5 7 / +");
     });
+    it("Øvelse 7", function () {
+      const result = shuntingYard("3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3");
+      assert.equal(result, "3 4 2 * 1 5 - 2 3 ^ ^ / +");
+    });
   });
 
   describe("Other tests", function () {
