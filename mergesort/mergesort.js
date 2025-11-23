@@ -1,5 +1,3 @@
-// import merge from "./merge.js";
-
 let iterations = 0;
 
 export default function mergeSort(array, print = false) {
