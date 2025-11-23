@@ -17,7 +17,7 @@ const isLeftAssociative = {
   "-": true,
 };
 
-// convert an inputString to an inputQueue
+// parse an inputString to an inputQueue
 function parseExpression(inputString) {
   const inputQueue = new Queue();
   for (const token of inputString.split(" ")) {
