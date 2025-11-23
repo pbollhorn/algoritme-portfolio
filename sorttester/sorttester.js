@@ -1,6 +1,6 @@
-// A tester of sort functions, to be used with any sort function "fun"
 import assert from "assert";
 
+// Test functionality to be used with any sort function "fun"
 export default function sortTester(fun) {
   describe(`Testing ${fun.name} function`, function () {
     it("Test case 1: Array with 10 elements", function () {
