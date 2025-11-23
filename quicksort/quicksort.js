@@ -5,6 +5,8 @@ export function quickSort(array, print = false, iterations = 0) {
   log(`${array}`);
   log("---------------------------");
 
+  iterations++;
+
   // Base case
   if (array.length <= 1) {
     return { array, iterations, sorted: true };
