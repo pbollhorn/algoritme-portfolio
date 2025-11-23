@@ -16,7 +16,7 @@ export default function quickSort(array, print = false) {
     return array;
   }
 
-  // Sets pivot to be middle element
+  // Set pivot to be middle element
   const middleIndex = Math.floor(array.length / 2);
   const pivot = array[middleIndex];
 
