@@ -1,8 +1,8 @@
 // Generic test functionality for any sort function
 import assert from "assert";
 
-export default function testSortfunction() {
-  describe("Testing isArraySorted function", function () {
+export default function sortTester(fun) {
+  describe(`Testing ${fun.name} function`, function () {
     describe("Positive tests", function () {
       it("Test case 1", function () {
         const result = true;
