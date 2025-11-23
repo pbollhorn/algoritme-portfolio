@@ -23,30 +23,25 @@ const isLeftAssociative = {
   "-": true,
 };
 
-console.log("hello");
-console.log(isLeftAssociative["^"]);
-console.log(isLeftAssociative["*"]);
-
-export default function shunting(inputString) {
+//parseExpression læser en expression og returnerer en inputQueue
+function parseExpression(expression) {
   const inputQueue = new Queue();
-  const outputQueue = new Queue();
-  const operatorStack = new Stack();
-
-  //parseExpression læser en expression og putter den i inputQueue
-  function parseExpression(expression) {
-    const splitted = expression.split(" ");
-    for (const element of splitted) {
-      if (isNaN(element)) {
-        // element er en operation
-        inputQueue.enqueue(element);
-      } else {
-        // element er et tal
-        inputQueue.enqueue(Number(element));
-      }
+  for (const element of expression.split(" ")) {
+    if (isNaN(element)) {
+      // element er en operation
+      inputQueue.enqueue(element);
+    } else {
+      // element er et tal
+      inputQueue.enqueue(Number(element));
     }
   }
+  return inputQueue;
+}
 
-  parseExpression(inputString);
+export default function shunting(inputString) {
+  const inputQueue = parseExpression(inputString);
+  const outputQueue = new Queue();
+  const operatorStack = new Stack();
 
   // While there are tokens to be read
   while (inputQueue.size() > 0) {
@@ -66,7 +61,8 @@ export default function shunting(inputString) {
       token === "/" ||
       token === "^"
     ) {
-      while ( // TODO: Does this really have to look so complicated?
+      while (
+        // TODO: Does this really have to look so complicated?
         operatorStack.size() > 0 &&
         operatorStack.peek() !== "(" &&
         (precedence[operatorStack.peek()] > precedence[token] ||
