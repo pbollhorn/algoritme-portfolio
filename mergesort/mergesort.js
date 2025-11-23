@@ -1,27 +1,21 @@
-import { merge } from "./merge.js";
+import merge from "./merge.js";
 
-export function mergeSort(array, print = false, iterations = 0) {
+let iterations = 0;
+
+export default function mergeSort(array, print = false) {
   const log = print ? console.log : () => {}; // Only log if print is true
 
   if (array.length <= 1) {
-    return {
-      array: array,
-      iterations: 1,
-      sorted: true,
-    };
+    return array;
   }
 
+  // Split array into part A and part B
   const middleIndex = Math.floor(array.length / 2);
-  const arrayA = array.slice(0, middleIndex);
-  const arrayB = array.slice(middleIndex);
+  let arrayA = array.slice(0, middleIndex);
+  let arrayB = array.slice(middleIndex);
 
-  const outputA = mergeSort(arrayA, print, iterations);
-  const outputB = mergeSort(arrayB, print, iterations);
-  const outputC = merge(outputA.array, outputB.array, iterations);
+  arrayA = mergeSort(arrayA, print);
+  arrayB = mergeSort(arrayB, print);
 
-  return {
-    array: outputC.array,
-    iterations: outputA.iterations + outputB.iterations + outputC.iterations,
-    sorted: true,
-  };
+  return merge(arrayA, arrayB).array;
 }

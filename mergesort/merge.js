@@ -6,7 +6,7 @@
 // Output:
 // - arrayC
 // - iterations
-export function merge(arrayA, arrayB, iterations = 0) {
+export default function merge(arrayA, arrayB, iterations = 0) {
   const arrayC = [];
 
   // Loop until either arrayA or arrayB is empty
