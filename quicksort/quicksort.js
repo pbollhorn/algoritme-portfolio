@@ -2,7 +2,7 @@
 // The iterations variable counts number of times the quickSort function is called
 let iterations = 0;
 
-export function quickSort(array, print = false) {
+export default function quickSort(array, print = false) {
   const log = print ? console.log : () => {}; // Only log if print is true
 
   iterations++;
