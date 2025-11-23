@@ -6,33 +6,27 @@ export default function rpnCalculator(inputString) {
   const inputQueue = parseExpression(inputString);
   const resultStack = new Stack();
 
-  // går gennem køen og finder tal og operationer
+  // Nested function: Gå through queue and find numbers and operators
   function goThroughQueue() {
+    // While there are tokens to be read
     while (inputQueue.size() > 0) {
-      // dequeue element fra køen
-      const element = inputQueue.dequeue();
+      // Read a token
+      const token = inputQueue.dequeue();
 
-      // hvis det er et number:
-      //      push det til resultstack
-      // ellers er det en operation
-      //      så kald performOperation med den
-      if (typeof element === "number") {
-        resultStack.push(element);
+      // If token is a number:
+      //      add it to resultStack
+      // else it is an operator:
+      //      call performOperation
+      if (typeof token === "number") {
+        resultStack.push(token);
       } else {
-        performOperation(element);
+        performOperation(token);
       }
     }
   }
 
-  // udfører en bestemt operation
+  // Nested function: Perform operation
   function performOperation(operation) {
-    // pop de sidste to værdier fra resultStack til A og B
-    // hvis operation == "+"
-    //      læg A og B sammen, push resultatet til resultStack
-    // hvis operation == "*"
-    //    gang A og B, push resultat til resultStack
-    // osv...
-
     const B = resultStack.pop();
     const A = resultStack.pop();
     switch (operation) {
@@ -47,6 +41,9 @@ export default function rpnCalculator(inputString) {
         break;
       case "/":
         resultStack.push(A / B);
+        break;
+      case "^":
+        resultStack.push(A ^ B);
         break;
     }
   }
