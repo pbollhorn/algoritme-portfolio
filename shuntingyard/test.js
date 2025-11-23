@@ -66,11 +66,11 @@ describe("Testing RPN Calculator", function () {
     });
     it("Øvelse 6", function () {
       const result = rpnCalculator("23 2 ^ 13 9 * - 5 7 / +");
-      assert.equal(result.toFixed(2), 412.71);
+      assert.equal(result.toFixed(3), 412.714);
     });
     it("Øvelse 7", function () {
       const result = rpnCalculator("3 4 2 * 1 5 - 2 3 ^ ^ / +");
-      assert.equal(result.toFixed(2), 3.0);
+      assert.equal(result.toFixed(3), 3.0);
     });
   });
 });
