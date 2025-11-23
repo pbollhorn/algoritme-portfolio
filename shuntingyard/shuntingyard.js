@@ -1,12 +1,6 @@
 import Queue from "./queue.js";
 import Stack from "./stack.js";
 
-// Pseudo code for shunting yard algorithm:
-// https://brilliant.org/wiki/shunting-yard-algorithm/
-// https://en.wikipedia.org/wiki/Shunting_yard_algorithm
-
-// Online converter: https://jsfiddle.net/7jh9f/2/
-
 const precedence = {
   "^": 4,
   "*": 3,
@@ -23,10 +17,10 @@ const isLeftAssociative = {
   "-": true,
 };
 
-//parseExpression læser en expression og returnerer en inputQueue
-function parseExpression(expression) {
+//parseExpression læser en inputString og returnerer en inputQueue
+function parseExpression(inputString) {
   const inputQueue = new Queue();
-  for (const element of expression.split(" ")) {
+  for (const element of inputString.split(" ")) {
     if (isNaN(element)) {
       // element er en operation
       inputQueue.enqueue(element);
