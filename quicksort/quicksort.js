@@ -24,9 +24,9 @@ export default function quickSort(array, print = false) {
   // - smaller than pivot
   // - equal to pivot
   // - larger than pivot
-  const smaller = [];
-  const equal = [];
-  const larger = [];
+  let smaller = [];
+  let equal = [];
+  let larger = [];
   for (const element of array) {
     if (element < pivot) smaller.push(element);
     else if (element === pivot) equal.push(element);
@@ -34,8 +34,8 @@ export default function quickSort(array, print = false) {
   }
 
   // Sort subarrays using recursion
-  const smallerSorted = quickSort(smaller, print);
-  const largerSorted = quickSort(larger, print);
+  smaller = quickSort(smaller, print);
+  larger = quickSort(larger, print);
 
-  return [...smallerSorted, ...equal, ...largerSorted];
+  return [...smaller, ...equal, ...larger];
 }
