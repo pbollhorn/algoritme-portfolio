@@ -1,4 +1,3 @@
-import Queue from "./queue.js";
 import Stack from "./stack.js";
 import { parseExpression } from "./shuntingyard.js";
 
@@ -55,20 +54,3 @@ export default function rpnCalculator(inputString) {
   goThroughQueue();
   return resultStack.pop();
 }
-
-// //parseExpression læser en expression og putter den i inputQueue
-// function parseExpression(expression) {
-//   const splitted = expression.split(" ");
-//   for (const val of splitted) {
-//     if (isNaN(val)) {
-//       // val er en operation
-//       inputQueue.enqueue(val);
-//     } else {
-//       inputQueue.enqueue(Number(val));
-//     }
-//   }
-// }
-
-const expression = "5 9 + 4 /";
-const result = rpnCalculator(expression);
-console.log(result);
